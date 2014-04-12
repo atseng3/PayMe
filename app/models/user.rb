@@ -1,3 +1,18 @@
+
+# == Schema Information
+#
+# Table name: loyalty_users
+#
+#  id                    :integer          not null, primary key
+#  password_digest       :string(255)      not null
+#  session_token         :string(255)      not null
+#  f_name                :string(255)      not null
+#  l_name                :string(255)      not null
+#  phone_number          :string(255)      not null
+#  email                 :string(255)      not null
+#  created_at            :datetime
+#  updated_at            :datetime
+
 class User < ActiveRecord::Base
   attr_accessible :f_name, :l_name, :email, :password
   attr_reader :password
