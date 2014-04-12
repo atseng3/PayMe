@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates :password, :length => { :minimum => 8, :allow_nil => true }
   validates :f_name, :l_name, :email, :session_token, :phone_number, :presence => true
   validates :phone_number, :uniqueness => true, :length => { :is => 10 }
-  validates :email, :uniqueness => true, :format => /[\w\.%\+\-]+@(?:[A-Z0-9\-]+\.)+(?:[A-Z]{2,}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|jobs|museum)/i
+  validates :email, :uniqueness => true, :format => /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)\b/
 
   after_initialize :ensure_session_token, :sanitize_fields
   
