@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_filter :require_current_user!, :only => [:show]
   before_filter :require_no_current_user!, :only => [:create, :new]
   
+  def show
+    render :show  
+  end
+  
   def index
     @users = User.all
   end
