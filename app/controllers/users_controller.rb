@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_filter :require_current_user!, :only => [:show]
   before_filter :require_no_current_user!, :only => [:create, :new]
   
+  def show
+    render :show  
+  end
+  
   def index
     @users = User.all
   end
@@ -17,10 +21,10 @@ class UsersController < ApplicationController
     if @user.save
       self.current_user = @user
       flash[:success] = ["Hurray! You've successuly signed up to Zenpay!!"]
-      redirect_to root_url
+      redirect_to new_user_url
     else
       flash[:danger] = @user.errors.full_messages
-      redirect_to root_url
+      redirect_to new_user_url
     end
   end
   

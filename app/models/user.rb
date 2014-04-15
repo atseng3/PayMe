@@ -14,16 +14,21 @@
 #  updated_at            :datetime
 
 class User < ActiveRecord::Base
-  attr_accessible :f_name, :l_name, :email, :password
+  attr_accessible :f_name, :l_name, :email, :password, :phone_number
   attr_reader :password
   
   validates :password_digest, :presence => { :message => "Password can't be blank"}
   validates :password, :length => { :minimum => 8, :allow_nil => true }
   validates :f_name, :l_name, :email, :session_token, :phone_number, :presence => true
   validates :phone_number, :uniqueness => true, :length => { :is => 10 }
-  validates :email, :uniqueness => true, :format => /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)\b/
+  # validates :email, :uniqueness => true, :format => /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)\b/
 
   after_initialize :ensure_session_token, :sanitize_fields
+  
+  has_many :checks,
+           :primary_key => :id,
+           :foreign_key => :recipient_id,
+           :class_name => 'Check'
   
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)

@@ -2,14 +2,11 @@ class SessionsController < ApplicationController
   before_filter :require_current_user!, :only => [:destroy]
   
   def new
-    render :new
+    # render :new
   end
   
   def create
-    user = User.find_by_credentials(
-      params[:user][:email]
-      params[:user][:password]
-    )
+    user = User.find_by_credentials(params[:user][:email],params[:user][:password])
     
     if user.nil?
       flash[:danger] = ["Credentials were wrong"]
