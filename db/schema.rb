@@ -14,11 +14,8 @@
 ActiveRecord::Schema.define(:version => 20140413182451) do
 
   create_table "checks", :force => true do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.float    "amount"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.float    "tax"
     t.float    "tip"
     t.boolean  "complete"
