@@ -6,11 +6,14 @@
 #  sender_id             :string(255)      not null
 #  recipient_id          :string(255)      not null
 #  amount                :float            not null
+#  tax                   :float            default => 0.0
+#  tip                   :float            default => 0.0
+#  complete              :boolean          default => false
 #  created_at            :datetime
 #  updated_at            :datetime
 
 class Check < ActiveRecord::Base
-  attr_accessible :sender_id, :recipient_id, :amount
+  attr_accessible :sender_id, :recipient_id, :amount, :tip, :tax, :complete
   
   belongs_to :user,
              :primary_key => :id,
