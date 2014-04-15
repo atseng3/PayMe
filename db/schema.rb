@@ -11,14 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140413182451) do
+ActiveRecord::Schema.define(:version => 20140415065455) do
 
   create_table "checks", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.float    "tax"
-    t.float    "tip"
-    t.boolean  "complete"
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.float    "amount"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.float    "tax",          :default => 0.0
+    t.float    "tip",          :default => 0.0
+    t.boolean  "complete",     :default => false
   end
 
   create_table "users", :force => true do |t|

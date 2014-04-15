@@ -1,0 +1,20 @@
+<form role="form" action="<%= checks_url %>" method="post">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+	<input
+	   name="check[sender_id]"
+	   type="hidden"
+	   value="<%= current_user.id %>">
+		 
+  <div class="form-group">
+    <label for="search-term">Email or Phone Number:</label>
+    <input type="text" name="search_term" class="form-control" id="search-term" placeholder="Email or Phone Number">
+  </div>		 
+  <div class="form-group">
+    <label for="amount">Amount</label>
+    <input type="text" name="check[amount]" class="form-control" id="amount" placeholder="Enter Amount">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

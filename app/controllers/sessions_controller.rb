@@ -6,15 +6,15 @@ class SessionsController < ApplicationController
   end
   
   def create
-    user = User.find_by_credentials(params[:user][:email],params[:user][:password])
+    user = User.find_by_credentials(params[:session][:email],params[:session][:password])
     
     if user.nil?
       flash[:danger] = ["Credentials were wrong"]
-      redirect_to root_url
+      redirect_to new_user_url
     else
       self.current_user = user
       flash[:success] = ["Successfully logged in as " + user.f_name + " " + user.l_name]
-      redirect_to root_url
+      redirect_to new_user_url
     end
   end
   

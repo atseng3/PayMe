@@ -1,6 +1,5 @@
 Zenpay::Application.routes.draw do
-  resources :users do
-      resources :checks
-  end
+  resources :users
+  resources :checks, :only => [:new, :create]
   resource :session, :only => [:new, :create, :destroy]
 end

@@ -1,3 +1,13 @@
-<h1>This is the Users show view</h2>
-<%= current_user.f_name %>
-<%= current_user.checks %>
+<h1>This is your Dashboard</h2>
+<% if current_user.checks %>
+	<h2><%= current_user.f_name %>'s outstanding checks:<h2>
+	<ul>
+	<% current_user.checks.each do |check| %>
+	  <!-- the buttons for now can be click to edit check and change into complete -->
+		<li>$<%= check.amount if check.complete == false %> from user <%= check.sender_id %></li><button type="button" class="btn btn-default">Paypal</button><button type="button" class="btn btn-default">Credit</button><button type="button" class="btn btn-default">Debit</button>
+	<% end %>
+	<!-- need functionality here to display completed checks, maybe a function to retrieve or cache completed and incomplete -->
+	</ul>
+	<% else %>
+	<h2>You have no outstanding checks</h2>
+<% end %>

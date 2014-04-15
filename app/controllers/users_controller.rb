@@ -20,11 +20,11 @@ class UsersController < ApplicationController
     
     if @user.save
       self.current_user = @user
-      flash[:success] = ["Hurray! You've successuly signed up to Zenpay!!"]
-      redirect_to new_user_url
+      flash[:success] = ["Hurray! You've successuly signed up to PayMe!!"]
+      redirect_to users_url(current_user)
     else
       flash[:danger] = @user.errors.full_messages
-      redirect_to new_user_url
+      redirect_to users_url(current_user)
     end
   end
   
