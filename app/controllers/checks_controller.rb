@@ -33,6 +33,22 @@ class ChecksController < ApplicationController
     end
   end
   
+  # def edit
+  #   @check = Check.find(params[:check][:id])
+  #   render :edit
+  # end
+  
+  def update
+    @check = Check.find(params[:check][:id])
+    if @check.update_attributes(params[:check])
+      flash[:success] = ["You've successfully updated completed a check!!"]
+      redirect_to user_url(current_user)
+    else
+      flash[:danger] = @check.errors.full_messages
+      redirect_to user_url(current_user)
+    end
+  end
+  
   def show
     
   end
