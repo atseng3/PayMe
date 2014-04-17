@@ -3,8 +3,8 @@
 # Table name: loyalty_users
 #
 #  id                    :integer          not null, primary key
-#  sender_id             :string(255)      not null
-#  recipient_id          :string(255)      not null
+#  user_id               :string(255)      not null
+#  buesiness_id          :string(255)      not null
 #  amount                :float            not null
 #  tax                   :float            default => 0.0
 #  tip                   :float            default => 0.0
@@ -13,15 +13,10 @@
 #  updated_at            :datetime
 
 class Check < ActiveRecord::Base
-  attr_accessible :sender_id, :recipient_id, :amount, :tip, :tax, :complete
+  attr_accessible :user_id, :business_id, :amount, :tip, :tax, :complete
   
-  belongs_to :user,
-             :primary_key => :id,
-             :foreign_key => :recipient_id,
-             :class_name => 'User'
+  validates :user_id, :business_id, :amount, :tip, :presence => true
 
-  belongs_to :business,
-             :primary_key => :id,
-             :foreign_key => :sender_id,
-             :class_name => 'Business'
+  belongs_to :user
+  belongs_to :business
 end

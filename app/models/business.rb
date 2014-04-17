@@ -1,5 +1,5 @@
 class Business < ActiveRecord::Base
-  attr_accessible :name, :phone_number
+  attr_accessible :name, :password
   attr_reader :password
   
   validates :password_digest, :presence => { :message => "Password can't be blank"}

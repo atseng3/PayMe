@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140417034937) do
+ActiveRecord::Schema.define(:version => 20140417053247) do
 
   create_table "businesses", :force => true do |t|
     t.text     "name",            :null => false
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(:version => 20140417034937) do
     t.float    "tax",        :default => 0.0
     t.float    "tip",        :default => 0.0
     t.boolean  "complete",   :default => false
+    t.integer  "user_id"
+    t.integer  "busines_id"
   end
 
   create_table "users", :force => true do |t|

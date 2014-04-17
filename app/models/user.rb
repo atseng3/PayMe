@@ -14,7 +14,7 @@
 #  updated_at            :datetime
 
 class User < ActiveRecord::Base
-  attr_accessible :f_name, :l_name, :email, :phone_number
+  attr_accessible :f_name, :l_name, :email, :phone_number, :password
   attr_reader :password
   
   validates :password_digest, :presence => { :message => "Password can't be blank"}
