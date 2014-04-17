@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140417053247) do
+ActiveRecord::Schema.define(:version => 20140417034937) do
 
   create_table "businesses", :force => true do |t|
     t.text     "name",            :null => false
@@ -22,24 +22,25 @@ ActiveRecord::Schema.define(:version => 20140417053247) do
   end
 
   create_table "checks", :force => true do |t|
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.float    "tax",        :default => 0.0
-    t.float    "tip",        :default => 0.0
-    t.boolean  "complete",   :default => false
-    t.integer  "user_id"
-    t.integer  "busines_id"
+    t.integer  "business_id", :null => false
+    t.integer  "user_id",     :null => false
+    t.float    "tax",         :null => false
+    t.float    "tip"
+    t.float    "amount",      :null => false
+    t.boolean  "complete"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.string   "f_name",                          :null => false
-    t.string   "l_name",                          :null => false
-    t.string   "email",                           :null => false
-    t.string   "password_digest",                 :null => false
-    t.string   "session_token",                   :null => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.string   "phone_number",    :default => "", :null => false
+    t.string   "f_name",          :null => false
+    t.string   "l_name",          :null => false
+    t.string   "email",           :null => false
+    t.string   "phone_number",    :null => false
+    t.string   "password_digest", :null => false
+    t.string   "session_token",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
