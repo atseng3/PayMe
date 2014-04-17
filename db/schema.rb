@@ -11,17 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140415065455) do
+ActiveRecord::Schema.define(:version => 20140417034937) do
+
+  create_table "businesses", :force => true do |t|
+    t.text     "name",            :null => false
+    t.string   "password_digest", :null => false
+    t.string   "session_token",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "checks", :force => true do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.float    "amount"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.float    "tax",          :default => 0.0
-    t.float    "tip",          :default => 0.0
-    t.boolean  "complete",     :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.float    "tax",        :default => 0.0
+    t.float    "tip",        :default => 0.0
+    t.boolean  "complete",   :default => false
   end
 
   create_table "users", :force => true do |t|

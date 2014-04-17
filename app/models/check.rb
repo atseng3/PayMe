@@ -19,4 +19,9 @@ class Check < ActiveRecord::Base
              :primary_key => :id,
              :foreign_key => :recipient_id,
              :class_name => 'User'
+
+  belongs_to :business,
+             :primary_key => :id,
+             :foreign_key => :sender_id,
+             :class_name => 'Business'
 end
